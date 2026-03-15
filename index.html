@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C97A5E'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Rounded MT Bold%2C Arial%2C sans-serif' font-size='40' font-weight='bold' fill='%23FFFFFF'%3EP%3C/text%3E%3C/svg%3E" />
+    <title>Clinica Veterinaria Pokotucho</title>
+    <meta name="description" content="Na Pokotucho, seu pet e tratado com o amor que ele merece. Consultas veterinarias, banho e tosa, petshop e farmacia em Uniao/PI." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --salmon:     #C97A5E;
+        --salmon-l:   #E8A88F;
+        --salmon-d:   #A85E44;
+        --offwhite:   #F5F0EB;
+        --offwhite-d: #EDE6DC;
+        --cream:      #FAF7F3;
+        --ink:        #2E2318;
+        --muted:      #7A6555;
+        --white:      #FFFFFF;
+        --r:          18px;
+        --r-lg:       28px;
+        --shadow:     0 6px 32px rgba(100,60,30,.10);
+        --shadow-s:   0 2px 12px rgba(100,60,30,.07);
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Nunito', sans-serif; color: var(--ink); background: var(--cream); line-height: 1.65; overflow-x: hidden; }
+      img { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      .wrap { width: min(1120px, 92%); margin-inline: auto; }
+      section { padding: 6rem 0; }
+      h1, h2, h3 { font-family: 'Fredoka', sans-serif; line-height: 1.15; }
+      h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 600; }
+      h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; color: var(--ink); }
+      h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: .4rem; }
+      p  { color: var(--muted); margin-bottom: .7rem; }
+      strong { color: var(--ink); font-weight: 700; }
+
+      /* HEADER */
+      .site-header { position: sticky; top: 0; z-index: 100; background: rgba(245,240,235,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,122,94,.15); transition: box-shadow .3s; }
+      .site-header.scrolled { box-shadow: var(--shadow-s); }
+      .nav-wrapper { display: flex; justify-content: space-between; align-items: center; min-height: 76px; gap: 1rem; }
+      .brand { font-family: 'Caprasimo', cursive; font-size: 2rem; font-weight: 400; color: var(--salmon); letter-spacing: .01em; }
+      .nav-list { list-style: none; display: flex; gap: .5rem; flex-wrap: wrap; }
+      .nav-list a { padding: .45rem 1rem; border-radius: 999px; font-size: .95rem; font-weight: 700; font-family: 'Fredoka', sans-serif; color: var(--ink); transition: background .2s, color .2s, transform .2s; }
+      .nav-list a:hover { background: var(--offwhite-d); transform: translateY(-2px); }
+      .nav-cta { background: var(--salmon) !important; color: var(--white) !important; padding: .45rem 1.2rem !important; }
+      .nav-cta:hover { background: var(--salmon-d) !important; }
+
+      /* HERO */
+      .hero { padding: 4rem 0 5rem; background: var(--offwhite); position: relative; overflow: hidden; }
+      .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 80% 50%, rgba(201,122,94,.08) 0%, transparent 70%); pointer-events: none; }
+      .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+      .hero h1 { margin-bottom: 1.2rem; color: var(--ink); animation: fadeUp .6s ease .1s both; }
+      .hero h1 em { font-style: normal; color: var(--salmon); }
+      .hero-desc { font-size: 1.08rem; max-width: 44ch; animation: fadeUp .6s ease .2s both; }
+      .hero-actions { display: flex; gap: .85rem; flex-wrap: wrap; margin-top: 2rem; animation: fadeUp .6s ease .3s both; }
+      .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.6rem; border-radius: 999px; font-weight: 700; font-size: .97rem; font-family: 'Fredoka', sans-serif; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; border: none; }
+      .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+      .btn-secondary { background: var(--white); color: var(--ink); border: 2px solid var(--offwhite-d); }
+      .btn-wa { background: #25D366; color: #fff; }
+      .hero-visual { position: relative; animation: fadeRight .7s ease .2s both; }
+      .hero-card { background: var(--white); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 2.4rem; border-left: 4px solid var(--salmon-l); }
+      .hero-card-quote { font-family: 'Fredoka', sans-serif; font-size: 1.25rem; font-weight: 500; color: var(--ink); line-height: 1.5; }
+
+      /* TRUST BAR */
+      .trust-bar { padding: 1.6rem 0; background: var(--salmon); }
+      .trust-items { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+      .trust-item { display: flex; align-items: center; gap: .6rem; font-size: .95rem; font-weight: 700; font-family: 'Fredoka', sans-serif; color: var(--white); }
+      .trust-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.6); display: inline-block; flex-shrink: 0; }
+
+      /* SECTION LABEL */
+      .section-label { display: inline-block; font-family: 'Fredoka', sans-serif; font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--salmon); margin-bottom: .6rem; }
+
+      /* ABOUT */
+      .about { background: var(--white); }
+      .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+      .about-image-block { position: relative; }
+      .about-image-block img { box-shadow: var(--shadow); }
+      .about-tag { position: absolute; bottom: -1.2rem; right: -1.2rem; background: var(--salmon); color: var(--white); border-radius: var(--r-lg); padding: 1rem 1.4rem; text-align: center; box-shadow: var(--shadow); }
+      .about-tag strong { font-family: 'Fredoka', sans-serif; font-size: 1.8rem; display: block; line-height: 1; }
+      .about-tag span { font-size: .8rem; opacity: .9; }
+      .about-text p { max-width: 46ch; }
+      .values-list { margin-top: 1.8rem; display: grid; gap: .9rem; }
+      .value-item { display: flex; gap: .85rem; align-items: flex-start; background: var(--cream); border-radius: var(--r); padding: .9rem 1.1rem; }
+      .value-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: .1rem; }
+      .value-item p { margin: 0; font-size: .92rem; }
+
+      /* SERVICES */
+      .services { background: var(--offwhite); }
+      .services-intro { max-width: 54ch; margin-bottom: 3.5rem; }
+      .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+      .service-card { background: var(--white); border-radius: var(--r-lg); padding: 1.8rem; box-shadow: var(--shadow-s); transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden; }
+      .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--salmon), var(--salmon-l)); border-radius: 4px 4px 0 0; }
+      .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+      .service-card h3 { color: var(--ink); margin-bottom: .5rem; font-family: 'Fredoka', sans-serif; font-size: 1.15rem; }
+      .service-card p { font-size: .93rem; margin: 0; }
+      .service-tag { display: inline-block; margin-top: .9rem; background: var(--offwhite-d); color: var(--salmon-d); border-radius: 999px; padding: .22rem .7rem; font-size: .78rem; font-weight: 700; font-family: 'Fredoka', sans-serif; }
+
+      /* WHY */
+      .why { background: var(--ink); color: #fff; }
+      .why p { color: rgba(255,255,255,.65); }
+      .why h2 { color: #fff; }
+      .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+      .why-list { display: grid; gap: 1.2rem; margin-top: 2rem; }
+      .why-item { border-left: 2px solid var(--salmon-l); padding-left: 1.1rem; }
+      .why-item h3 { color: #fff; font-size: 1rem; margin-bottom: .2rem; font-family: 'Fredoka', sans-serif; }
+      .why-item p { font-size: .9rem; margin: 0; }
+      .why-visual { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--r-lg); padding: 2.5rem; display: grid; gap: 1.2rem; }
+      .why-stat-row { border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 1.2rem; }
+      .why-stat-row:last-child { border: none; padding: 0; }
+      .ws-num { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; font-weight: 600; color: var(--salmon-l); }
+      .ws-label { font-size: .85rem; color: rgba(255,255,255,.55); margin-top: .2rem; }
+
+      /* ESTETICA */
+      .petshop { background: var(--white); }
+      .petshop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+      .product-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; }
+      .ptag { background: var(--offwhite-d); border-radius: 999px; padding: .4rem .9rem; font-size: .9rem; font-weight: 700; font-family: 'Fredoka', sans-serif; color: var(--salmon-d); }
+      .pharmacy-box { background: linear-gradient(135deg, var(--offwhite), #fff); border-radius: var(--r-lg); padding: 1.6rem 1.8rem; border: 1px solid rgba(201,122,94,.2); margin-top: 1.8rem; }
+      .pharmacy-box h3 { color: var(--salmon-d); font-family: 'Fredoka', sans-serif; }
+      .pharmacy-box p { margin: .5rem 0 0; font-size: .93rem; }
+
+      /* CTA */
+      .cta-section { background: linear-gradient(135deg, var(--salmon), var(--salmon-d)); color: #fff; text-align: center; padding: 5rem 0; }
+      .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+      .cta-section p { color: rgba(255,255,255,.85); max-width: 50ch; margin-inline: auto; }
+      .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.2rem; }
+
+      /* CONTACT */
+      .contact { background: var(--offwhite); }
+      .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+      .contact-info { display: grid; gap: 1rem; }
+      .ci-row { display: flex; align-items: flex-start; gap: 1rem; background: var(--white); border-radius: var(--r); padding: 1rem 1.2rem; box-shadow: var(--shadow-s); }
+      .ci-icon { font-size: 1.4rem; flex-shrink: 0; }
+      .ci-row strong { display: block; margin-bottom: .15rem; font-family: 'Fredoka', sans-serif; font-size: 1rem; }
+      .ci-row a { color: var(--salmon-d); font-weight: 700; }
+      .ci-row a:hover { text-decoration: underline; }
+      .hours-box { background: var(--ink); color: #fff; border-radius: var(--r-lg); padding: 1.6rem; margin-top: 1.4rem; }
+      .hours-box h3 { color: #fff; margin-bottom: 1rem; font-family: 'Fredoka', sans-serif; font-size: 1.15rem; }
+      .hours-row { display: flex; justify-content: space-between; padding: .4rem 0; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .9rem; }
+      .hours-row:last-child { border: none; }
+      .hours-row span:last-child { color: var(--salmon-l); font-weight: 700; }
+
+      /* BOOKING FORM */
+      .booking-form-box { background: var(--white); border-radius: var(--r-lg); padding: 2rem 2.2rem; box-shadow: var(--shadow-s); border: 1px solid var(--offwhite-d); }
+      .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+      .form-input { width: 100%; padding: .8rem 1.1rem; border-radius: var(--r); border: 1.5px solid var(--offwhite-d); font-family: 'Nunito', sans-serif; font-size: .97rem; color: var(--ink); background: var(--cream); outline: none; transition: border-color .2s, box-shadow .2s; margin-bottom: 1rem; display: block; appearance: none; }
+      .form-input::placeholder { color: var(--muted); opacity: .7; }
+      .form-input:focus { border-color: var(--salmon-l); box-shadow: 0 0 0 3px rgba(201,122,94,.12); background: var(--white); }
+      .form-textarea { resize: none; }
+      .form-btn { width: 100%; background: #25D366; color: #fff; border: none; border-radius: 999px; padding: .9rem 1.6rem; font-family: 'Fredoka', sans-serif; font-size: 1.05rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: .7rem; transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 18px rgba(37,211,102,.3); margin-top: .5rem; }
+      .form-btn:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.4); }
+
+      /* FOOTER */
+      .site-footer { background: var(--ink); color: rgba(255,255,255,.6); padding: 3rem 0; }
+      .footer-inner { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: center; }
+      .footer-brand { font-family: 'Caprasimo', cursive; font-size: 1.7rem; font-weight: 400; color: var(--salmon-l); }
+      .footer-sub { font-size: .85rem; margin-top: .3rem; }
+      .footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+      .footer-links a { font-size: .9rem; transition: color .2s; }
+      .footer-links a:hover { color: var(--salmon-l); }
+      .footer-copy { font-size: .82rem; text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem; }
+
+      /* WHATSAPP FLOAT */
+      .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; background: #25D366; color: #fff; border-radius: 999px; padding: .8rem 1.4rem; display: flex; align-items: center; gap: .6rem; font-weight: 700; font-size: .95rem; font-family: 'Fredoka', sans-serif; box-shadow: 0 6px 28px rgba(37,211,102,.4); transition: transform .25s, box-shadow .25s; }
+      .wa-float:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(37,211,102,.5); }
+      .wa-float svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+      /* ANIMATIONS */
+      @keyframes fadeUp    { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+      @keyframes fadeRight { from { opacity:0; transform:translateX(24px); } to { opacity:1; transform:translateX(0); } }
+      .reveal { opacity: 1; transform: none; transition: opacity .65s ease, transform .65s ease; }
+      .reveal.will-animate { opacity: 0; transform: translateY(28px); }
+      .reveal.visible { opacity: 1; transform: none; }
+
+      /* RESPONSIVE */
+      @media (max-width: 840px) {
+        .hero-grid, .about-grid, .why-grid, .petshop-grid, .contact-grid, .services-grid { grid-template-columns: 1fr; }
+        .hero { padding: 3rem 0 3.5rem; }
+        .about-tag { position: static; margin-top: 1rem; display: inline-flex; gap: 1rem; align-items: center; }
+        .why-visual { display: none; }
+        section { padding: 4rem 0; }
+        .nav-wrapper { flex-direction: column; padding: .75rem 0; gap: .6rem; align-items: center; }
+        .nav-list { justify-content: center; }
+        .wa-float span { display: none; }
+        .wa-float { padding: .9rem; border-radius: 50%; }
+        .form-grid-2 { grid-template-columns: 1fr; }
+        .booking-form-box { padding: 1.4rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="site-header" id="site-header">
+      <div class="wrap nav-wrapper">
+        <div class="brand">Pokotucho</div>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#estetica">Estetica</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="https://wa.me/5586999590134" class="nav-cta">&#x1F43E; Agendar</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="hero" id="inicio">
+        <div class="wrap hero-grid">
+          <div>
+            <h1>Cuidado de verdade<br>comeca <em>pelo afeto.</em></h1>
+            <p class="hero-desc">Na Pokotucho, seu pet nao e so um paciente. Cada consulta, cada carinho, cada detalhe pensado para que ele se sinta seguro e amado.</p>
+            <div class="hero-actions">
+              <a href="https://wa.me/5586999590134" class="btn btn-wa">
+                <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff;flex-shrink:0"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.2.1 11.7c0 2 .5 4 1.5 5.8L0 24l6.7-1.7c1.7.9 3.5 1.4 5.3 1.4h.1c6.6 0 11.9-5.2 11.9-11.7 0-3.1-1.2-6-3.5-8.5Z"/></svg>
+                Agendar pelo WhatsApp
+              </a>
+              <a href="#especialidades" class="btn btn-secondary">Ver especialidades &rarr;</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-card">
+              <p class="hero-card-quote">"Aqui, o cuidado nao termina na consulta."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="trust-bar">
+        <div class="wrap">
+          <div class="trust-items">
+            <div class="trust-item"><span class="trust-dot"></span> Farmacia veterinaria propria</div>
+            <div class="trust-item"><span class="trust-dot"></span> Caes, gatos e outros animais</div>
+            <div class="trust-item"><span class="trust-dot"></span> Agendamento pelo WhatsApp</div>
+          </div>
+        </div>
+      </div>
+
+      <section class="about" id="sobre">
+        <div class="wrap about-grid">
+          <div class="about-image-block reveal">
+            <img src="foto-clinica.jpg" alt="Clinica Pokotucho" style="width:100%;height:420px;object-fit:cover;object-position:center top;border-radius:28px;display:block;">
+            <div class="about-tag">
+              <strong>&#x2764;&#xFE0F;</strong>
+              <span>Feito com afeto</span>
+            </div>
+          </div>
+          <div class="about-text reveal">
+            <span class="section-label">Quem somos</span>
+            <h2>Uma clinica criada com proposito &mdash; e muito amor</h2>
+            <p>A <strong>Pokotucho</strong> nasceu da crenca de que cuidar de um pet vai muito alem de uma consulta. E sobre escuta, presenca e uma relacao de confianca construida a cada visita.</p>
+            <p>Criamos um ambiente pensado para reduzir a ansiedade, acolher as duvidas e tratar cada bichinho com a atencao que ele merece. Aqui, ninguem sai sem entender o que aconteceu.</p>
+            <div class="values-list">
+              <div class="value-item">
+                <div class="value-icon">&#x1F91D;</div>
+                <div>
+                  <h3>Atendimento humanizado</h3>
+                  <p>Explicamos cada etapa com calma, sem pressa e sem jargoes dificeis.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-icon">&#x1F512;</div>
+                <div>
+                  <h3>Transparencia total</h3>
+                  <p>Orcamento claro antes de qualquer procedimento. Sem surpresas na hora de pagar.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-icon">&#x1F4F2;</div>
+                <div>
+                  <h3>Acompanhamento pos-consulta</h3>
+                  <p>A consulta termina na clinica, mas o cuidado continua. Tiramos duvidas pelo WhatsApp.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="services" id="especialidades">
+        <div class="wrap">
+          <div class="reveal">
+            <span class="section-label">Especialidades</span>
+            <h2>Do basico ao essencial &mdash; tudo sob o mesmo teto</h2>
+            <p class="services-intro">Saude, prevencao, estetica e farmacia reunidos em um so lugar, para que o seu pet tenha tudo que precisa sem que voce precise ir longe.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card reveal">
+              <h3>Consulta Clinica Geral</h3>
+              <p>Uma avaliacao completa com escuta ativa, diagnostico cuidadoso e orientacoes claras &mdash; incluindo nutricao e cuidados preventivos para cada fase da vida do seu pet.</p>
+              <span class="service-tag">Essencial</span>
+            </div>
+            <div class="service-card reveal">
+              <h3>Vacinas e Prevencao</h3>
+              <p>Protocolo vacinal atualizado para caes e gatos, com controle de vermifugos, antipulgas e anticarrapatos. Prevenir e sempre o melhor caminho.</p>
+              <span class="service-tag">Profilaxia</span>
+            </div>
+            <div class="service-card reveal">
+              <h3>Exames e Farmacia</h3>
+              <p>Exames para apoiar o diagnostico com precisao, e farmacia veterinaria propria com medicamentos e suplementos dispensados com orientacao profissional.</p>
+              <span class="service-tag">Diagnostico &amp; Farmacia</span>
+            </div>
+            <div class="service-card reveal">
+              <h3>Clinica Estetica</h3>
+              <p>Banho, tosa e higiene completa com produtos de qualidade e profissionais que tratam cada pet com paciencia, cuidado e carinho do inicio ao fim.</p>
+              <span class="service-tag">Estetica</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="why">
+        <div class="wrap why-grid">
+          <div class="reveal">
+            <span class="section-label" style="color:var(--salmon-l)">Por que a Pokotucho?</span>
+            <h2>Porque seu pet merece mais do que uma ficha de atendimento</h2>
+            <p>A diferenca esta nos detalhes &mdash; na forma como recebemos, explicamos, cuidamos e acompanhamos.</p>
+            <div class="why-list">
+              <div class="why-item">
+                <h3>Ambiente pensado para o pet</h3>
+                <p>Espaco calmo, limpo e acolhedor &mdash; projetado para deixar ate os pets mais ansiosos a vontade.</p>
+              </div>
+              <div class="why-item">
+                <h3>Profissionais que se importam</h3>
+                <p>Uma equipe comprometida com a saude e o bem-estar real do seu animal, nao so com o protocolo.</p>
+              </div>
+              <div class="why-item">
+                <h3>Sem filas, sem burocracia</h3>
+                <p>Agendamento direto pelo WhatsApp, em segundos. Simples como deveria ser.</p>
+              </div>
+              <div class="why-item">
+                <h3>Clinica, estetica e farmacia</h3>
+                <p>Tudo que o seu pet precisa em uma so visita. Voce economiza tempo, ele ganha mais cuidado.</p>
+              </div>
+            </div>
+          </div>
+          <div class="why-visual reveal">
+            <div class="why-stat-row">
+              <div class="ws-num">100%</div>
+              <div class="ws-label">de dedicacao em cada atendimento</div>
+            </div>
+            <div class="why-stat-row">
+              <div class="ws-num">+10</div>
+              <div class="ws-label">especialidades disponiveis</div>
+            </div>
+            <div class="why-stat-row">
+              <div class="ws-num">24h</div>
+              <div class="ws-label">WhatsApp disponivel para duvidas</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="petshop" id="estetica">
+        <div class="wrap petshop-grid">
+          <div class="reveal">
+            <span class="section-label">Clinica Estetica</span>
+            <h2>Porque aparencia tambem e parte do bem-estar</h2>
+            <p>Um pet bem cuidado por fora reflete saude por dentro. Na nossa clinica estetica, o banho e a tosa sao feitos com calma e produtos que respeitam a pele do seu animal.</p>
+            <div class="product-tags">
+              <div class="ptag">Banho completo</div>
+              <div class="ptag">Tosa higienica</div>
+              <div class="ptag">Tosa na tesoura</div>
+              <div class="ptag">Hidratacao do pelo</div>
+              <div class="ptag">Limpeza de ouvidos</div>
+              <div class="ptag">Corte de unhas</div>
+              <div class="ptag">Perfumaria pet</div>
+              <div class="ptag">Produtos naturais</div>
+            </div>
+            <div class="pharmacy-box">
+              <h3>Farmacia Veterinaria</h3>
+              <p>Medicamentos, antiparasitarios e suplementos dispensados com responsabilidade e orientacao do veterinario. Tudo que a saude do seu pet precisa, sem precisar ir a outro lugar.</p>
+            </div>
+          </div>
+          <div class="reveal">
+            <img src="foto-estetica.jpg" alt="Clinica Estetica Pokotucho" style="width:100%;height:420px;object-fit:cover;object-position:center center;border-radius:28px;display:block;">
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="wrap">
+          <h2>Pronto para dar o melhor para o seu pet? &#x1F43E;</h2>
+          <p>Agende agora pelo WhatsApp. Rapido, sem burocracia, e o primeiro passo para uma vida mais saudavel ao lado do seu companheiro.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/5586999590134" class="btn btn-wa" style="font-size:1.05rem;padding:.85rem 2rem">
+              <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;flex-shrink:0"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.2.1 11.7c0 2 .5 4 1.5 5.8L0 24l6.7-1.7c1.7.9 3.5 1.4 5.3 1.4h.1c6.6 0 11.9-5.2 11.9-11.7 0-3.1-1.2-6-3.5-8.5Z"/></svg>
+              Agendar pelo WhatsApp
+            </a>
+            <a href="#contato" class="btn" style="background:rgba(255,255,255,.18);color:#fff;border:2px solid rgba(255,255,255,.35)">Ver informacoes de contato</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contato">
+        <div class="wrap">
+          <div class="reveal" style="margin-bottom:3rem">
+            <span class="section-label">Contato e Localizacao</span>
+            <h2>Venha nos visitar &mdash; ou chame no WhatsApp</h2>
+          </div>
+          <div class="contact-grid">
+            <div class="reveal">
+              <div class="contact-info">
+                <div class="ci-row">
+                  <div class="ci-icon">&#x1F4CD;</div>
+                  <div>
+                    <strong>Endereco</strong>
+                    Rua Aneirao Coutinho, Centro &mdash; 64120-000, Uniao/PI
+                  </div>
+                </div>
+                <div class="ci-row">
+                  <div class="ci-icon">&#x1F4F1;</div>
+                  <div>
+                    <strong>WhatsApp / Telefone</strong>
+                    <a href="https://wa.me/5586999590134">(86) 99959-0134</a>
+                  </div>
+                </div>
+                <div class="ci-row">
+                  <div class="ci-icon">&#x2709;&#xFE0F;</div>
+                  <div>
+                    <strong>E-mail</strong>
+                    <a href="mailto:pokotucho.vet@gmail.com">pokotucho.vet@gmail.com</a>
+                  </div>
+                </div>
+                <div class="ci-row">
+                  <div class="ci-icon">&#x1F4F8;</div>
+                  <div>
+                    <strong>Instagram</strong>
+                    <a href="https://instagram.com/pokotucho.vet" target="_blank">@pokotucho.vet</a>
+                  </div>
+                </div>
+              </div>
+              <div class="hours-box">
+                <h3>&#x23F0; Horarios de atendimento</h3>
+                <div class="hours-row"><span>Segunda a Sexta</span><span>08h &ndash; 18h</span></div>
+                <div class="hours-row"><span>Sabado</span><span>08h &ndash; 16h</span></div>
+                <div class="hours-row"><span>Domingo</span><span>Fechado</span></div>
+              </div>
+            </div>
+            <div class="reveal">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.0!2d-42.8647!3d-4.5918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRua%20Aneirão%20Coutinho%2C%20Centro%2C%20União%2C%20PI%2C%2064120-000!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr&q=Rua+Aneirão+Coutinho,+Centro,+União,+PI,+64120-000"
+                width="100%" height="360"
+                style="border:0;border-radius:28px;display:block;box-shadow:0 2px 12px rgba(100,60,30,.07);"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Localizacao da Clinica Veterinaria Pokotucho"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- FORMULARIO DE AGENDAMENTO -->
+          <div class="reveal" style="margin-top:3.5rem">
+            <span class="section-label">Agendamento rapido</span>
+            <h2 style="margin-bottom:1.5rem">Agende pelo WhatsApp em segundos</h2>
+            <div class="booking-form-box">
+              <form id="whatsappForm">
+                <div class="form-grid-2">
+                  <input type="text" id="nomeDono" placeholder="Seu nome" required class="form-input" />
+                  <input type="text" id="nomePet"  placeholder="Nome do pet" required class="form-input" />
+                </div>
+                <div class="form-grid-2">
+                  <input type="text" id="racaPet"  placeholder="Raca" class="form-input" />
+                  <input type="text" id="pesoPet"  placeholder="Peso (opcional)" class="form-input" />
+                </div>
+                <select id="servico" class="form-input">
+                  <option value="Consulta Geral">Consulta Geral</option>
+                  <option value="Vacinacao">Vacinacao</option>
+                  <option value="Banho e Tosa">Banho e Tosa</option>
+                  <option value="Exames Laboratoriais">Exames Laboratoriais</option>
+                  <option value="Outro">Outro</option>
+                </select>
+                <textarea id="mensagem" rows="3" placeholder="Mensagem adicional (opcional)..." class="form-input form-textarea"></textarea>
+                <button type="submit" class="form-btn">
+                  <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;flex-shrink:0"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.2.1 11.7c0 2 .5 4 1.5 5.8L0 24l6.7-1.7c1.7.9 3.5 1.4 5.3 1.4h.1c6.6 0 11.9-5.2 11.9-11.7 0-3.1-1.2-6-3.5-8.5Z"/></svg>
+                  Enviar pelo WhatsApp
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>
+            <div class="footer-brand">Pokotucho</div>
+            <div class="footer-sub">Clinica Veterinaria &amp; Estetica &mdash; Uniao/PI</div>
+          </div>
+          <div class="footer-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#especialidades">Especialidades</a>
+            <a href="#estetica">Estetica</a>
+            <a href="#contato">Contato</a>
+            <a href="https://instagram.com/pokotucho.vet" target="_blank">Instagram</a>
+          </div>
+        </div>
+        <div class="footer-copy">
+          &copy; 2025 Clinica Veterinaria Pokotucho. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <a href="https://wa.me/5586999590134" class="wa-float" aria-label="Falar pelo WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.2.1 11.7c0 2 .5 4 1.5 5.8L0 24l6.7-1.7c1.7.9 3.5 1.4 5.3 1.4h.1c6.6 0 11.9-5.2 11.9-11.7 0-3.1-1.2-6-3.5-8.5Z"/></svg>
+      <span>Agendar agora</span>
+    </a>
+
+    <script>
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+      });
+
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(el => el.classList.add('will-animate'));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => io.observe(el));
+
+      document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var nomeDono = document.getElementById('nomeDono').value;
+        var nomePet  = document.getElementById('nomePet').value;
+        var racaPet  = document.getElementById('racaPet').value;
+        var pesoPet  = document.getElementById('pesoPet').value;
+        var servico  = document.getElementById('servico').value;
+        var mensagem = document.getElementById('mensagem').value;
+        var telefone = '5586999590134';
+        var texto = '*NOVO AGENDAMENTO - POKOTUCHO*\n\n';
+        texto += '\uD83D\uDC3E *Dono:* ' + nomeDono + '\n';
+        texto += '\uD83D\uDC36 *Pet:* ' + nomePet + '\n';
+        texto += '\uD83E\uDDEC *Raca:* ' + (racaPet || 'Nao informado') + '\n';
+        texto += '\u2696\uFE0F *Peso:* ' + (pesoPet || 'Nao informado') + '\n';
+        texto += '\uD83E\uDE7A *Servico:* ' + servico + '\n';
+        if (mensagem) texto += '\uD83D\uDCDD *Obs:* ' + mensagem + '\n';
+        window.open('https://wa.me/' + telefone + '?text=' + encodeURIComponent(texto), '_blank');
+      });
+    </script>
+  </body>
+</html>
